@@ -4,13 +4,15 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(scanBasePackages={"pers.*.*"})
 @RestController
 @MapperScan("pers.song.NoOne.dao")
-public class SpringBootBaseApplication {
+public class SpringBootBaseApplication extends SpringBootServletInitializer{
 //exclude = DataSourceAutoConfiguration.class
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootBaseApplication.class, args);
@@ -20,4 +22,10 @@ public class SpringBootBaseApplication {
     String index(){
         return "Hello Spring Boot!";
     }
+	
+	 @Override
+	    protected SpringApplicationBuilder configure(
+	            SpringApplicationBuilder application) {
+	        return application.sources(SpringBootBaseApplication.class);
+	    }
 }
