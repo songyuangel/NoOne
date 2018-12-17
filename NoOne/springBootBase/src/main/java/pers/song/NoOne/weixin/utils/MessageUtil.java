@@ -18,6 +18,12 @@ import com.thoughtworks.xstream.XStream;
 import pers.song.NoOne.weixin.message.MessageText;
 
 public class MessageUtil {
+	
+	public final static String MESSAGETYPE_TEXT = "text";
+	public final static String MESSAGETYPE_IMAGE = "image";
+	public final static String MESSAGETYPE_VOICE = "voice";
+	public final static String MESSAGETYPE_VIDEO = "video";
+	
 	/**
 	 * 将微信的请求中参数转成map
 	 * @param request

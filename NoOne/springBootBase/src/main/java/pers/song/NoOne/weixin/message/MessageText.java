@@ -1,9 +1,13 @@
 package pers.song.NoOne.weixin.message;
+/**
+ * 文本信息
+ * @author song
+ *
+ */
 
 public class MessageText extends BaseMessage {
-private String Content;//文本消息内容
 	
-	private String MsgId;//消息id，64位整型
+	private String Content;//文本消息内容
 	
 	public MessageText(){
 		
@@ -18,7 +22,7 @@ private String Content;//文本消息内容
 		CreateTime = createTime;
 		MsgType = msgType;
 		Content = content;
-		MsgId = msgId;
+		MsgID = msgId;
 	}
  
  
@@ -30,11 +34,4 @@ private String Content;//文本消息内容
 		Content = content;
 	}
  
-	public String getMsgId() {
-		return MsgId;
-	}
- 
-	public void setMsgId(String msgId) {
-		MsgId = msgId;
-	}
 }

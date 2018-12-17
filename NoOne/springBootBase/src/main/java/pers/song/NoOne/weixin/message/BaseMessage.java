@@ -5,6 +5,7 @@ public class BaseMessage {
 	protected String FromUserName;
 	protected long CreateTime;
 	protected String MsgType;
+	protected String MsgID;
  
 	public BaseMessage() {
 		super();
@@ -38,6 +39,14 @@ public class BaseMessage {
 		return MsgType;
 	}
  
+	public String getMsgID() {
+		return MsgID;
+	}
+
+	public void setMsgID(String msgID) {
+		MsgID = msgID;
+	}
+
 	public void setMsgType(String msgType) {
 		MsgType = msgType;
 	}

@@ -3,7 +3,7 @@ package pers.song.NoOne.weixin.utils;
 import java.util.Arrays;
 
 public class CheckUtil {
-	private static final String token = "";
+	private static final String token = "songyu";
 	public static boolean checkSignature(String signature,String timestamp,String nonce){
 		if(signature == null || timestamp == null || nonce == null){
 			return false;
