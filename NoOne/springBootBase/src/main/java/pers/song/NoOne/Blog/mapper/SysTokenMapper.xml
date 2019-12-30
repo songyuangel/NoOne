@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.song.NoOne.Blog.dao.SysTokenMapper">
+  <resultMap id="BaseResultMap" type="pers.song.NoOne.Blog.entity.SysToken">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="statue" jdbcType="VARCHAR" property="statue" />
+    <result column="due_date" jdbcType="TIMESTAMP" property="dueDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account, account_id, token, statue, due_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_token
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByToken" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_token
+    where token = #{token,jdbcType=VARCHAR}
+      and statue = #{statue,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_token
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pers.song.NoOne.Blog.entity.SysToken">
+    insert into sys_token (id, account, account_id, 
+      token, statue, due_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}, 
+      #{token,jdbcType=VARCHAR}, #{statue,jdbcType=VARCHAR}, #{dueDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pers.song.NoOne.Blog.entity.SysToken">
+    insert into sys_token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="statue != null">
+        statue,
+      </if>
+      <if test="dueDate != null">
+        due_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="statue != null">
+        #{statue,jdbcType=VARCHAR},
+      </if>
+      <if test="dueDate != null">
+        #{dueDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.song.NoOne.Blog.entity.SysToken">
+    update sys_token
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="statue != null">
+        statue = #{statue,jdbcType=VARCHAR},
+      </if>
+      <if test="dueDate != null">
+        due_date = #{dueDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateStatueByAccountId" parameterType="map">
+    update sys_token
+       set statue = #{statue,jdbcType=VARCHAR}
+     where statue = '0'
+       <if test="accountId != null" >
+          and account_id = #{accountId,jdbcType=INTEGER}
+       </if>
+      <if test="token != null" >
+        and token = #{token,jdbcType=VARCHAR}
+      </if>
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="pers.song.NoOne.Blog.entity.SysToken">
+    update sys_token
+    set account = #{account,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=INTEGER},
+      token = #{token,jdbcType=VARCHAR},
+      statue = #{statue,jdbcType=VARCHAR},
+      due_date = #{dueDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

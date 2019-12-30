@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(scanBasePackages={"pers.*.*"})
 @RestController
-@MapperScan("pers.song.NoOne.dao")
-//@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@MapperScan({"pers.song.NoOne.dao","pers.song.NoOne.Blog.dao"})
 public class SpringBootBaseApplication extends SpringBootServletInitializer{
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootBaseApplication.class, args);

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.song.NoOne.Blog.dao.BlogUserinfoMapper">
+  <resultMap id="BaseResultMap" type="pers.song.NoOne.Blog.entity.BlogUserinfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_id" jdbcType="INTEGER" property="accountId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="sex_code" jdbcType="VARCHAR" property="sexCode" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="QQ" jdbcType="VARCHAR" property="qq" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="weibo" jdbcType="VARCHAR" property="weibo" />
+    <result column="avatarurl" jdbcType="VARCHAR" property="avatarurl" />
+    <result column="sidename" jdbcType="VARCHAR" property="sidename" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account_id, account, name, nickname, sex_code, birthday, telephone, email, QQ, 
+    address, weixin, weibo, avatarurl, sidename, mark, create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blog_userinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog_userinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="pers.song.NoOne.Blog.entity.BlogUserinfo">
+    insert into blog_userinfo (id, account_id, account, 
+      name, nickname, sex_code, 
+      birthday, telephone, email, 
+      QQ, address, weixin, 
+      weibo, avatarurl, sidename, 
+      mark, create_date, update_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{sexCode,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, 
+      #{weibo,jdbcType=VARCHAR}, #{avatarurl,jdbcType=VARCHAR}, #{sidename,jdbcType=VARCHAR}, 
+      #{mark,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pers.song.NoOne.Blog.entity.BlogUserinfo">
+    insert into blog_userinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="sexCode != null">
+        sex_code,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qq != null">
+        QQ,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="weibo != null">
+        weibo,
+      </if>
+      <if test="avatarurl != null">
+        avatarurl,
+      </if>
+      <if test="sidename != null">
+        sidename,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sexCode != null">
+        #{sexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null">
+        #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarurl != null">
+        #{avatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sidename != null">
+        #{sidename,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.song.NoOne.Blog.entity.BlogUserinfo">
+    update blog_userinfo
+    <set>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sexCode != null">
+        sex_code = #{sexCode,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null">
+        weibo = #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarurl != null">
+        avatarurl = #{avatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="sidename != null">
+        sidename = #{sidename,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.song.NoOne.Blog.entity.BlogUserinfo">
+    update blog_userinfo
+    set account_id = #{accountId,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      sex_code = #{sexCode,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      QQ = #{qq,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      weibo = #{weibo,jdbcType=VARCHAR},
+      avatarurl = #{avatarurl,jdbcType=VARCHAR},
+      sidename = #{sidename,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByAccountId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from blog_userinfo
+    where account_id = #{account_id,jdbcType=INTEGER}
+  </select>
+
+</mapper>

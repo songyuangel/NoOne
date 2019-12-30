@@ -2,11 +2,22 @@ server:
   port: 8080
   
 spring:
+  profiles:
+    include: blog
   datasource:
-     url: jdbc:mysql://127.0.0.1:3306/demo?serverTimezone=GMT&useSSL=false
-     username: root
-     password: root
+     url: jdbc:mysql://192.168.1.10:3306/weixin?serverTimezone=GMT&useSSL=false
+     username: ENC(fxmTbjYtfrbvExMYpVGajQ==)
+     password: ENC(luM9cxPcMBfX/ruHgwchpt5uIb73POCa)
      driver-class-name: com.mysql.jdbc.Driver
      
 mybatis:
-  mapper-locations: classpath:pers/song/demo/mapper/*.xml
+  mapper-locations: classpath:pers/song/NoOne/mapper/*.xml,classpath:pers/song/NoOne/Blog/mapper/*.xml
+
+logging:
+  level:
+    pers.song.NoOne.Blog.dao: DEBUG
+
+jasypt:
+  encryptor:
+    password: Song
+

@@ -1,188 +1,225 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>pers.song</groupId>
-	<artifactId>NoOne</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+    <groupId>pers.song</groupId>
+    <artifactId>NoOne</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
 
-	<name>NoOne</name>
-	<description>my project for Spring Boot</description>
+    <name>NoOne</name>
+    <description>my project for Spring Boot</description>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.3.2</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.2</version>
+        </dependency>
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.generator</groupId>
-			<artifactId>mybatis-generator-core</artifactId>
-			<version>1.3.5</version>
-      </dependency>
-       
-      <dependency>
-	    <groupId>dom4j</groupId>
-	    <artifactId>dom4j</artifactId>
-	</dependency>
-	
-	<dependency>
-		    <groupId>com.thoughtworks.xstream</groupId>
-		    <artifactId>xstream</artifactId>
-		    <version>1.4.9</version>
-		</dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
+        </dependency>
 
-	</dependencies>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
 
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-				<filtering>false</filtering>
-			</resource>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.9</version>
+        </dependency>
 
-		<resource>
-			<directory>src/main/java</directory>
-			<includes>
-				<include>**/*.yml</include>
-				<include>**/*.properties</include>
-				<include>**/*.xml</include>
-			</includes>
-			<filtering>false</filtering>
-		</resource>
-		<resource>
-			<directory>src/main/resources</directory>
-			<includes>
-				<include>**/*.yml</include>
-				<include>**/*.properties</include>
-				<include>**/*.xml</include>
-			</includes>
-			<filtering>false</filtering>
-		</resource>
-		</resources>
-	<finalName>NoOne</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>1.16</version>
+        </dependency>
 
-           <groupId>org.mybatis.generator</groupId>
 
-           <artifactId>mybatis-generator-maven-plugin</artifactId>
+        <!-- SpringBootText注解依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-           <version>1.3.2</version>
+        <!-- Junit依赖 -->
+        <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <scope>test</scope>
+        </dependency>
 
-           <executions>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.11</version>
+        </dependency>
 
-              <execution>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.46</version>
+        </dependency>
 
-                 <id>Generate MyBatis Files</id>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
 
-                 <goals>
+    </dependencies>
 
-                    <goal>generate</goal>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
 
-                 </goals>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <finalName>NoOne</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
-                 <phase>generate</phase>
+            <plugin>
 
-                 <configuration>
+                <groupId>org.mybatis.generator</groupId>
 
-                    <verbose>true</verbose>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
 
-                    <overwrite>true</overwrite>
+                <version>1.3.2</version>
 
-                 </configuration>
+                <executions>
 
-              </execution>
+                    <execution>
 
-           </executions>
+                        <id>Generate MyBatis Files</id>
 
- 
+                        <goals>
 
-           <dependencies>
+                            <goal>generate</goal>
 
-              <dependency>
+                        </goals>
 
-                 <groupId>mysql</groupId>
+                        <phase>generate</phase>
 
-                 <artifactId>mysql-connector-java</artifactId>
+                        <configuration>
 
-                 <version>8.0.11</version>
+                            <verbose>true</verbose>
 
-              </dependency>
+                            <overwrite>true</overwrite>
 
-              <dependency>
+                        </configuration>
 
-                 <groupId>org.mybatis.generator</groupId>
+                    </execution>
 
-           <artifactId>mybatis-generator-core</artifactId>
+                </executions>
 
-                 <version>1.3.5</version>
 
-              </dependency>
+                <dependencies>
 
- 
+                    <dependency>
 
-              <dependency>
+                        <groupId>mysql</groupId>
 
-                 <groupId>org.mybatis</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
 
-                 <artifactId>mybatis</artifactId>
+                        <version>8.0.11</version>
 
-                 <version>3.4.2</version>
+                    </dependency>
 
-              </dependency>
+                    <dependency>
 
-           </dependencies>
+                        <groupId>org.mybatis.generator</groupId>
 
-        </plugin>
-		</plugins>
-	</build>
+                        <artifactId>mybatis-generator-core</artifactId>
+
+                        <version>1.3.5</version>
+
+                    </dependency>
+
+
+                    <dependency>
+
+                        <groupId>org.mybatis</groupId>
+
+                        <artifactId>mybatis</artifactId>
+
+                        <version>3.4.2</version>
+
+                    </dependency>
+
+                </dependencies>
+
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

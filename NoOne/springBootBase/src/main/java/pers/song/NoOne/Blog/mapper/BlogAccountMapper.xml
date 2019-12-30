@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.song.NoOne.Blog.dao.BlogAccountMapper">
+  <resultMap id="BaseResultMap" type="pers.song.NoOne.Blog.entity.BlogAccount">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="stop_flag" jdbcType="VARCHAR" property="stopFlag" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="weixin_id" jdbcType="VARCHAR" property="weixinId" />
+    <result column="weibo_id" jdbcType="VARCHAR" property="weiboId" />
+    <result column="QQ_id" jdbcType="VARCHAR" property="qqId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account, password, email, telephone, stop_flag, create_date, update_date, mark, 
+    weixin_id, weibo_id, QQ_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="pers.song.NoOne.Blog.entity.BlogAccountKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blog_account
+    where id = #{id,jdbcType=INTEGER}
+      and account = #{account,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByAccountAndPassword" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from blog_account
+    where password = #{password,jdbcType=INTEGER}
+    and account = #{account,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="pers.song.NoOne.Blog.entity.BlogAccountKey">
+    delete from blog_account
+    where id = #{id,jdbcType=INTEGER}
+      and account = #{account,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="pers.song.NoOne.Blog.entity.BlogAccount">
+    insert into blog_account (id, account, password, 
+      email, telephone, stop_flag, 
+      create_date, update_date, mark, 
+      weixin_id, weibo_id, QQ_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{stopFlag,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{mark,jdbcType=VARCHAR}, 
+      #{weixinId,jdbcType=VARCHAR}, #{weiboId,jdbcType=VARCHAR}, #{qqId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="pers.song.NoOne.Blog.entity.BlogAccount">
+    insert into blog_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="stopFlag != null">
+        stop_flag,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="weixinId != null">
+        weixin_id,
+      </if>
+      <if test="weiboId != null">
+        weibo_id,
+      </if>
+      <if test="qqId != null">
+        QQ_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="stopFlag != null">
+        #{stopFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinId != null">
+        #{weixinId,jdbcType=VARCHAR},
+      </if>
+      <if test="weiboId != null">
+        #{weiboId,jdbcType=VARCHAR},
+      </if>
+      <if test="qqId != null">
+        #{qqId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="pers.song.NoOne.Blog.entity.BlogAccount">
+    update blog_account
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="stopFlag != null">
+        stop_flag = #{stopFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinId != null">
+        weixin_id = #{weixinId,jdbcType=VARCHAR},
+      </if>
+      <if test="weiboId != null">
+        weibo_id = #{weiboId,jdbcType=VARCHAR},
+      </if>
+      <if test="qqId != null">
+        QQ_id = #{qqId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and account = #{account,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.song.NoOne.Blog.entity.BlogAccount">
+    update blog_account
+    set password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      stop_flag = #{stopFlag,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      mark = #{mark,jdbcType=VARCHAR},
+      weixin_id = #{weixinId,jdbcType=VARCHAR},
+      weibo_id = #{weiboId,jdbcType=VARCHAR},
+      QQ_id = #{qqId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and account = #{account,jdbcType=VARCHAR}
+  </update>
+</mapper>
