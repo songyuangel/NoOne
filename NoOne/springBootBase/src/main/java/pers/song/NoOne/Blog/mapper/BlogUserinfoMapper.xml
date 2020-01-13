@@ -169,12 +169,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="pers.song.NoOne.Blog.entity.BlogUserinfo">
     update blog_userinfo
     <set>
-      <if test="accountId != null">
-        account_id = #{accountId,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null">
-        account = #{account,jdbcType=VARCHAR},
-      </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -213,9 +207,6 @@
       </if>
       <if test="mark != null">
         mark = #{mark,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null">
-        create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="updateDate != null">
         update_date = #{updateDate,jdbcType=TIMESTAMP},

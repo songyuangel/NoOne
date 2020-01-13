@@ -19,7 +19,6 @@ public class VBlogLoginController {
     public String checkLogin(@RequestParam String encrypt ){
         PostData data = new PostData(encrypt);
         PostData retData = vBlogLoginService.checkLogin(data);
-        System.out.println(retData.toString());
         return retData.getEncString();
     }
 
@@ -28,7 +27,6 @@ public class VBlogLoginController {
     public String logOut(@RequestParam String encrypt ){
         PostData data = new PostData(encrypt);
         PostData retData = vBlogLoginService.logOut(data);
-        System.out.println(retData.toString());
         return retData.getEncString();
     }
 

@@ -8,9 +8,11 @@
     <result column="token" jdbcType="VARCHAR" property="token" />
     <result column="statue" jdbcType="VARCHAR" property="statue" />
     <result column="due_date" jdbcType="TIMESTAMP" property="dueDate" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, account, account_id, token, statue, due_date
+    id, account, account_id, token, statue, due_date, create_date, update_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -31,10 +33,10 @@
   </delete>
   <insert id="insert" parameterType="pers.song.NoOne.Blog.entity.SysToken">
     insert into sys_token (id, account, account_id, 
-      token, statue, due_date
+      token, statue, due_date, create_date, update_date
       )
     values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}, 
-      #{token,jdbcType=VARCHAR}, #{statue,jdbcType=VARCHAR}, #{dueDate,jdbcType=TIMESTAMP}
+      #{token,jdbcType=VARCHAR}, #{statue,jdbcType=VARCHAR}, #{dueDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="pers.song.NoOne.Blog.entity.SysToken">
@@ -58,6 +60,12 @@
       <if test="dueDate != null">
         due_date,
       </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -77,6 +85,12 @@
       </if>
       <if test="dueDate != null">
         #{dueDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -98,12 +112,19 @@
       <if test="dueDate != null">
         due_date = #{dueDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateStatueByAccountId" parameterType="map">
     update sys_token
-       set statue = #{statue,jdbcType=VARCHAR}
+       set statue = #{statue,jdbcType=VARCHAR},
+           update_date = CURRENT_TIMESTAMP
      where statue = '0'
        <if test="accountId != null" >
           and account_id = #{accountId,jdbcType=INTEGER}
@@ -119,7 +140,9 @@
       account_id = #{accountId,jdbcType=INTEGER},
       token = #{token,jdbcType=VARCHAR},
       statue = #{statue,jdbcType=VARCHAR},
-      due_date = #{dueDate,jdbcType=TIMESTAMP}
+      due_date = #{dueDate,jdbcType=TIMESTAMP},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

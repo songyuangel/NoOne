@@ -2,6 +2,7 @@ package pers.song.NoOne.Blog.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class SysToken implements Serializable {
     private Integer id;
@@ -15,6 +16,10 @@ public class SysToken implements Serializable {
     private String statue;
 
     private Date dueDate;
+
+    private Date createDate;
+
+    private Date updateDate;
 
     private static final long serialVersionUID = 1L;
 
@@ -66,53 +71,53 @@ public class SysToken implements Serializable {
         this.dueDate = dueDate;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
     @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        SysToken other = (SysToken) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getAccount() == null ? other.getAccount() == null : this.getAccount().equals(other.getAccount()))
-            && (this.getAccountId() == null ? other.getAccountId() == null : this.getAccountId().equals(other.getAccountId()))
-            && (this.getToken() == null ? other.getToken() == null : this.getToken().equals(other.getToken()))
-            && (this.getStatue() == null ? other.getStatue() == null : this.getStatue().equals(other.getStatue()))
-            && (this.getDueDate() == null ? other.getDueDate() == null : this.getDueDate().equals(other.getDueDate()));
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SysToken sysToken = (SysToken) o;
+        return Objects.equals(id, sysToken.id) &&
+                Objects.equals(account, sysToken.account) &&
+                Objects.equals(accountId, sysToken.accountId) &&
+                Objects.equals(token, sysToken.token) &&
+                Objects.equals(statue, sysToken.statue) &&
+                Objects.equals(dueDate, sysToken.dueDate) &&
+                Objects.equals(createDate, sysToken.createDate) &&
+                Objects.equals(updateDate, sysToken.updateDate);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getAccount() == null) ? 0 : getAccount().hashCode());
-        result = prime * result + ((getAccountId() == null) ? 0 : getAccountId().hashCode());
-        result = prime * result + ((getToken() == null) ? 0 : getToken().hashCode());
-        result = prime * result + ((getStatue() == null) ? 0 : getStatue().hashCode());
-        result = prime * result + ((getDueDate() == null) ? 0 : getDueDate().hashCode());
-        return result;
+        return Objects.hash(id, account, accountId, token, statue, dueDate, createDate, updateDate);
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", account=").append(account);
-        sb.append(", accountId=").append(accountId);
-        sb.append(", token=").append(token);
-        sb.append(", statue=").append(statue);
-        sb.append(", dueDate=").append(dueDate);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "SysToken{" +
+                "id=" + id +
+                ", account='" + account + '\'' +
+                ", accountId=" + accountId +
+                ", token='" + token + '\'' +
+                ", statue='" + statue + '\'' +
+                ", dueDate=" + dueDate +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                '}';
     }
 }
