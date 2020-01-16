@@ -34,6 +34,8 @@ public class VBlogLoginServiceImpl implements VBlogLoginService {
     private SysTokenMapper sysTokenMapper;
     @Autowired
     private VBlogTokenService tokenService;
+    @Autowired
+    private VBlogTokenService vBlogTokenService;
     @Value("${timeout}")
     private int tokenTimeOut;
 
@@ -81,6 +83,72 @@ public class VBlogLoginServiceImpl implements VBlogLoginService {
     public PostData logOut(PostData data) {
 
         PostData retData =  tokenService.logout(data);
+
+        return retData;
+    }
+
+    /**
+     * 修改密码，输入串data：
+     * {
+     *     oldPass:xxx,
+     *     pass:xxx,
+     *     checkPass:xxx
+     * }
+     * @param data
+     * @return
+     */
+    @Override
+    public PostData changePassword(PostData data) {
+        // 验证token有效
+        PostData retData = vBlogTokenService.checkToken(data);
+        if (retData.getCode() != null && Integer.valueOf(retData.getCode()) < 0){
+            return retData;
+        }
+
+        String usercode = data.getUsercode();
+        BlogUserinfo blogUserinfo = blogUserinfoMapper.selectByPrimaryKey(Integer.parseInt(usercode));
+        if(blogUserinfo == null){
+            retData.setCode("-100");
+            retData.setErrMsg("未找到有效的用户信息！");
+            return retData;
+        }
+
+        String dataStr = data.getData();
+        JSONObject obj= JSON.parseObject(dataStr);
+        String oldPass = obj.getString("oldPass");
+
+        Map<String,String> map = new HashMap<>();
+        map.put("account",blogUserinfo.getAccount());
+        map.put("password",oldPass);
+        //判断账号密码是否正确
+        BlogAccount blogAccount = blogAccountMapper.selectByAccountAndPassword(map);
+
+        if(blogAccount == null){
+            retData.setCode("-301");
+            retData.setErrMsg("旧密码错误！");
+            return retData;
+        }
+
+        String pass = obj.getString("pass");
+        String checkPass = obj.getString("checkPass");
+        if(pass == null || "".equals(pass) || checkPass == null || "".equals(checkPass)){
+            retData.setCode("-301");
+            retData.setErrMsg("传入的新密码为空！");
+            return retData;
+        }
+
+        if(!checkPass.equals(pass)){
+            retData.setCode("-301");
+            retData.setErrMsg("传入的新密码和确认密码不一致！");
+            return retData;
+        }
+
+        blogAccount.setPassword(pass);
+        blogAccount.setUpdateDate(new Date());
+        blogAccountMapper.updateByPrimaryKey(blogAccount);
+
+        retData.setCode("0");
+        retData.setData("");
 
         return retData;
     }
