@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.song.NoOne.Blog.dao.BlogTagMapper">
+  <resultMap id="BaseResultMap" type="pers.song.NoOne.Blog.entity.BlogTag">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="tag_name" jdbcType="VARCHAR" property="tagName" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, tag_name, create_date, update_date, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blog_tag
+    where id = #{id,jdbcType=INTEGER}
+      and user_id = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from blog_tag
+    where user_id = #{user_id,jdbcType=INTEGER}
+      and state = '1'
+  </select>
+  <select id="selectByTagName" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from blog_tag
+    where user_id = #{userid,jdbcType=INTEGER}
+    and tag_name = #{tagname,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="pers.song.NoOne.Blog.entity.BlogTag">
+    insert into blog_tag ( user_id, tag_name,
+      create_date, update_date, state
+      )
+    values ( #{userId,jdbcType=INTEGER}, #{tagName,jdbcType=VARCHAR},
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="pers.song.NoOne.Blog.entity.BlogTag">
+    update blog_tag
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="tagName != null">
+        tag_name = #{tagName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="pers.song.NoOne.Blog.entity.BlogTag">
+    update blog_tag
+    set user_id = #{userId,jdbcType=INTEGER},
+      tag_name = #{tagName,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

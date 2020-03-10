@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pers.song.NoOne.Blog.dao.BlogAccountMapper;
 import pers.song.NoOne.Blog.dao.BlogUserinfoMapper;
 import pers.song.NoOne.Blog.dao.SysTokenMapper;
@@ -35,6 +36,7 @@ public class VBlogTokenServiceImpl implements VBlogTokenService {
     final private int UPDATE_TOKEN_SECOND = 300 ;
 
     @Override
+    @Transactional
     public PostData login(PostData data) {
         String userCode =  data.getUsercode();
         Date currentDat = new Date();
@@ -69,6 +71,7 @@ public class VBlogTokenServiceImpl implements VBlogTokenService {
     }
 
     @Override
+    @Transactional
     public PostData logout(PostData data) {
         PostData retData = new PostData();
         String usercode = data.getUsercode();
@@ -102,6 +105,7 @@ public class VBlogTokenServiceImpl implements VBlogTokenService {
     }
 
     @Override
+    @Transactional
     public PostData checkToken(PostData data) {
         PostData retData = new PostData();
         Date currentDate = new Date();

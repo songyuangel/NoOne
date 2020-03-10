@@ -41,7 +41,7 @@
         </javaClientGenerator>
         
         <!-- 要生成哪些表 -->
-        <table tableName="blog_userinfo" domainObjectName="BlogUserinfo"
+        <table tableName="blog_article" domainObjectName="BlogArticle"
                selectByExampleQueryId="false"
                enableCountByExample="false"
                enableDeleteByExample="false"
